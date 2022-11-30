@@ -1,5 +1,5 @@
 # Before building the container image run:
-./mvnw package -Pnative
+./mvnw clean package -Pnative
 
 # Then, build the image with:
 docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/quarkus-starter .
