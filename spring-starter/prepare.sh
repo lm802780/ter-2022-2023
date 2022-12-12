@@ -1,4 +1,9 @@
-# mvn clean package -Pnative,nativeTest
-./mvnw -Pnative clean package
+mvn clean package -Pnative
 
-docker run --rm -p 8080:8080 spring-starter:0.0.1-SNAPSHOT
+# https://www.graalvm.org/22.2/reference-manual/native-image/guides/containerise-native-executable-and-run-in-docker-container/
+
+# Then, build the image with:
+docker build -f Dockerfile -t spring-starter .
+
+# Then run the container using:
+docker run -i --rm -p 8080:8080 spring-starter

@@ -34,6 +34,22 @@
 			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>build-native</id>
+						<phase>package</phase>
+						<goals>
+							<goal>compile-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<imageName>spring-starter</imageName>
+					<buildArgs>
+						<buildArg>-H:+ReportExceptionStackTraces -H:+StaticExecutableWithDynamicLibC</buildArg>
+					</buildArgs>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -45,23 +61,6 @@
 	<profiles>
 		<profile>
 			<id>native</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.graalvm.buildtools</groupId>
-						<artifactId>native-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>build-native</id>
-								<goals>
-									<goal>compile-no-fork</goal>
-								</goals>
-								<phase>package</phase>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 	</profiles>
 
