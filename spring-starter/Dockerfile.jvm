@@ -1,0 +1,24 @@
+FROM maven:3.8.5-openjdk-17-slim AS builder
+
+ARG USER_HOME_DIR="/root"
+
+ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
+# Set the working directory to /home/app
+WORKDIR /build
+
+# Copy the source code into the image for building
+COPY . /build
+
+# Build
+RUN mvn --no-transfer-progress clean package -Dmaven.test.skip=true
+
+# The deployment Image
+FROM azul/zulu-openjdk:17.0.3-jre as runner
+
+EXPOSE 8080
+
+# Copy the native executable into the containers
+COPY --from=builder /build/target/spring-starter.jar .
+ENTRYPOINT ["java", "-jar", "spring-starter.jar"]

@@ -1,0 +1,51 @@
+# ----- Namespace -----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spring-starter-native
+  labels:
+    name: spring-starter-native
+
+---
+# ----- Deployment -----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-starter-native
+  namespace: spring-starter-native
+  labels:
+    app: spring-starter-native
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-starter-native
+  template:
+    metadata:
+      labels:
+        app: spring-starter-native
+    spec:
+      containers:
+        - name: spring-starter-native
+          image: spring-starter-native
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8082
+
+---
+# ----- Service -----
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-starter-native
+  namespace: spring-starter-native
+  labels:
+    app: spring-starter-native
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8082
+      targetPort: 8080
+  selector:
+    app: spring-starter-native

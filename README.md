@@ -33,3 +33,13 @@ export PATH=/path/to/<graalvm>/bin:$PATH
 ```bash
 export JAVA_HOME=/path/to/<graalvm>
 ```
+
+## Configuration Kubernetes
+
+
+| Image                  | URL                         |
+|------------------------|-----------------------------|
+| quarkus-starter-native | http://localhost:8080/hello |
+| quarkus-starter-jvm    | http://localhost:8081/hello |
+| spring-starter-native  | http://localhost:8082/hello |
+| spring-starter-jvm     | http://localhost:8083/hello |

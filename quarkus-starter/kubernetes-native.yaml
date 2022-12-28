@@ -1,0 +1,51 @@
+# ----- Namespace -----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: quarkus-starter-native
+  labels:
+    name: quarkus-starter-native
+
+---
+# ----- Deployment -----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-starter-native
+  namespace: quarkus-starter-native
+  labels:
+    app: quarkus-starter-native
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-starter-native
+  template:
+    metadata:
+      labels:
+        app: quarkus-starter-native
+    spec:
+      containers:
+        - name: quarkus-starter-native
+          image: quarkus-starter-native
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8080
+
+---
+# ----- Service -----
+apiVersion: v1
+kind: Service
+metadata:
+  name: quarkus-starter-native
+  namespace: quarkus-starter-native
+  labels:
+    app: quarkus-starter-native
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: quarkus-starter-native
