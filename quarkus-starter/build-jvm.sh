@@ -1,5 +1,5 @@
 # Before building the container image run:
-./mvnw clean package
+./mvnw --no-transfer-progress clean package -Dmaven.test.skip=true
 
 # Then, build the image with:
 docker build -f src/main/docker/Dockerfile.jvm -t quarkus-starter-jvm .
