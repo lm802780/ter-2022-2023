@@ -1,0 +1,10 @@
+{
+  "simulation": "spring.nat.SpringNativeSimulation",
+  "simulationId": "springnativesimulation-20230128174532809",
+  "start": 1674927933850,
+  "description": "",
+  "scenarios": ["GetHello"],
+  "assertions": [
+
+  ]
+}

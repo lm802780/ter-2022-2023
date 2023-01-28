@@ -1,0 +1,10 @@
+{
+  "simulation": "quarkus.nat.QuarkusNativeSimulation",
+  "simulationId": "quarkusnativesimulation-20230128180345926",
+  "start": 1674929026831,
+  "description": "",
+  "scenarios": ["GetHello"],
+  "assertions": [
+
+  ]
+}
