@@ -1,0 +1,10 @@
+{
+  "simulation": "spring.jvm.SpringJvmSimulation",
+  "simulationId": "springjvmsimulation-20230130174424382",
+  "start": 1675100665230,
+  "description": "",
+  "scenarios": ["GetHello"],
+  "assertions": [
+
+  ]
+}

@@ -1,0 +1,51 @@
+# ----- Namespace -----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: spring-starter
+  labels:
+    name: spring-starter
+
+---
+# ----- Deployment -----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-starter
+  namespace: spring-starter
+  labels:
+    app: spring-starter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-starter
+  template:
+    metadata:
+      labels:
+        app: spring-starter
+    spec:
+      containers:
+        - name: spring-starter
+          image: spring-starter:0.0.1-SNAPSHOT
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8082
+
+---
+# ----- Service -----
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-starter
+  namespace: spring-starter
+  labels:
+    app: spring-starter
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8082
+      targetPort: 8080
+  selector:
+    app: spring-starter

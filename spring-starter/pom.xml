@@ -59,21 +59,8 @@
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
-                        <extensions>true</extensions>
-                        <executions>
-                            <execution>
-                                <id>build-native</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>compile-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                         <configuration>
-                            <imageName>spring-starter</imageName>
-                            <buildArgs>
-                                <buildArg>-H:+ReportExceptionStackTraces</buildArg>
-                            </buildArgs>
+                            <imageName>spring-starter-native</imageName>
                         </configuration>
                     </plugin>
                 </plugins>

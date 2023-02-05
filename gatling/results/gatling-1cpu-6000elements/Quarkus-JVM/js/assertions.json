@@ -1,0 +1,10 @@
+{
+  "simulation": "quarkus.jvm.QuarkusJvmSimulation",
+  "simulationId": "quarkusjvmsimulation-20230130181336430",
+  "start": 1675102417248,
+  "description": "",
+  "scenarios": ["GetHello"],
+  "assertions": [
+
+  ]
+}
